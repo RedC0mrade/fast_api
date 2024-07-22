@@ -3,6 +3,6 @@ from pydantic import BaseModel
 
 class User(BaseModel):
     """User models"""
-    id: int
+    age: int
     name: str
-
+    is_adult: bool = False
