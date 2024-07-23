@@ -1,11 +1,12 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
+class UserCreate(BaseModel):
     """User models"""
     age: int
+    email: str
     name: str
-    is_adult: bool = False
+    is_subscribed: bool = False
 
 
 class Feedback(BaseModel):
