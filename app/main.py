@@ -47,5 +47,9 @@ async def get_product(product_id: int):
             return product
 
 
-@app.get('/product/search')
-async  def product_search(keyword: str, category: str|None = None, limit: int = 10):
+@app.get('/products/search')
+async def product_search(keyword: str, category: str | None = None, limit: int = 10):
+    search_result = list(filter(lambda x: keyword in x.name, data_base))
+    if category:
+        category_result = list(filter(lambda x: x.category == category, search_result))
+    return category_result[:limit]
