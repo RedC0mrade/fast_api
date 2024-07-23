@@ -9,6 +9,13 @@ class UserCreate(BaseModel):
     is_subscribed: bool = False
 
 
+class SampleProduct(BaseModel):
+    product_id: int
+    name: str
+    category: str
+    price: float
+
+
 class Feedback(BaseModel):
     """Message model"""
     name: str

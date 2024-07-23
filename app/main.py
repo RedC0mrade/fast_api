@@ -2,10 +2,16 @@ from fastapi import FastAPI
 
 from starlette.responses import FileResponse
 
-from models import UserCreate, Feedback
+from models import SampleProduct, UserCreate, Feedback
 
 app = FastAPI()
 messages = []
+
+data_base = [SampleProduct(product_id=456, name='Phone Case', category='Accessories', price=19.99),
+             SampleProduct(product_id=101, name='Headphones', category='Accessories', price=99.99),
+             SampleProduct(product_id=789, name='Iphone', category='Electronics', price=1299.99),
+             SampleProduct(product_id=123, name='Smartphone', category='Electronics', price=599.99)]
+
 
 @app.get('/')
 async def root():
@@ -26,3 +32,20 @@ async def user_create(user: UserCreate):
 async def feedback(feedback: Feedback):
     messages.append({feedback.name: feedback.message})
     return {"message": "Feedback received. Thank you, Alice!"}
+
+
+@app.post('/product_create')
+async def product_create(samply_product: SampleProduct):
+    data_base.append(samply_product)
+    return samply_product
+
+
+@app.get('/product/{product_id}')
+async def get_product(product_id: int):
+    for product in data_base:
+        if product.product_id == product_id:
+            return product
+
+
+@app.get('/product/search')
+async  def product_search(keyword: str, category: str|None = None, limit: int = 10):
