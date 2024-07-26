@@ -52,6 +52,7 @@ async def product_search(keyword: str, category: str | None = None, limit: int =
     search_result = list(filter(lambda x: keyword in x.name, data_base))
     if category:
         category_result = list(filter(lambda x: x.category == category, search_result))
-    return category_result[:limit]
+        return category_result[:limit]
+    return search_result[:limit]
 
 @app.post('/login')
