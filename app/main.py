@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from starlette.responses import FileResponse
 
-from models import SampleProduct, UserCreate, Feedback
+from models import SampleProduct, UserLogin, UserCreate, Feedback
 
 app = FastAPI()
 messages = []
@@ -56,3 +56,4 @@ async def product_search(keyword: str, category: str | None = None, limit: int =
     return search_result[:limit]
 
 @app.post('/login')
+async def user_login(user_login: UserLogin):
