@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 
 from starlette.responses import FileResponse
 
@@ -11,6 +11,9 @@ data_base = [SampleProduct(product_id=456, name='Phone Case', category='Accessor
              SampleProduct(product_id=101, name='Headphones', category='Accessories', price=99.99),
              SampleProduct(product_id=789, name='Iphone', category='Electronics', price=1299.99),
              SampleProduct(product_id=123, name='Smartphone', category='Electronics', price=599.99)]
+
+user_base = [UserLogin(username='QQQ', login='qqq', token=None),
+             UserLogin(usrname='WWW', login='www', token=None)]
 
 
 @app.get('/')
