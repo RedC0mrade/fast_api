@@ -12,8 +12,8 @@ data_base = [SampleProduct(product_id=456, name='Phone Case', category='Accessor
              SampleProduct(product_id=789, name='Iphone', category='Electronics', price=1299.99),
              SampleProduct(product_id=123, name='Smartphone', category='Electronics', price=599.99)]
 
-user_base = [UserLogin(username='QQQ', login='qqq', token=None),
-             UserLogin(usrname='WWW', login='www', token=None)]
+user_base = [UserLogin(username='QQQ', password='qqq', token=None),
+             UserLogin(username='WWW', password='www', token=None)]
 
 
 @app.get('/')
@@ -58,5 +58,7 @@ async def product_search(keyword: str, category: str | None = None, limit: int =
         return category_result[:limit]
     return search_result[:limit]
 
+
 @app.post('/login')
-async def user_login(user_login: UserLogin):
+async def user_login(user_login: UserLogin, response: Response):
+    print(response.status_code)
