@@ -62,4 +62,3 @@ async def product_search(keyword: str, category: str | None = None, limit: int =
 @app.post('/login')
 async def user_login(user_login: UserLogin, response: Response):
     print(response.status_code)
-
