@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 
 class UserLogin(BaseModel):
+    """Login models"""
     username: str
     password: str
     token: str | None = None
