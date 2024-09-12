@@ -2,14 +2,14 @@ from pydantic import BaseModel
 
 
 class UserLogin(BaseModel):
-    """Login models"""
+    """Login model"""
     username: str
     password: str
     token: str | None = None
 
 
 class UserCreate(BaseModel):
-    """User models"""
+    """User model"""
     age: int
     email: str
     name: str
@@ -17,6 +17,7 @@ class UserCreate(BaseModel):
 
 
 class SampleProduct(BaseModel):
+    """Product model"""
     product_id: int
     name: str
     category: str
